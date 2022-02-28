@@ -1,0 +1,67 @@
+
+<MyTableHeader>:
+    size_hint: .5, None
+    height: '40dp'
+    pos_hint: {"center_x": .5, "center_y": .5}
+    elevation: 10
+
+    MDBoxLayout:
+        adaptive_width: True
+        MDLabel:
+            text: 'Item'
+    MDSeparator:
+
+RootScreen:
+    MDBoxLayout:
+        orientation: "vertical"
+        MDToolbar:
+            title: 'Avaliador de Cotações'
+            elevation: 10
+        MDLabel:
+            id: label
+            text: "Quantidade de Cotações:"
+            adaptive_size: True
+            font_style: "Body2"
+            halign: "left"
+#            pos_hint: {"center_y": .2, 'center_x': .2}
+            x: cota_field.x - self.width
+            y: cota_field.y - self.height
+
+        MDTextFieldRect:
+            id: cota_field
+            size_hint: None, None
+            height: "30dp"
+            width: "100dp"
+            pos_hint: {"center_y": .1, 'center_x': .1}
+            x: root.center[0] - self.width / 2
+
+        MDLabel:
+            id: label_itens
+            text: "Itens por Cotação:"
+            adaptive_size: True
+            font_style: "Body2"
+            halign: "left"
+#            pos_hint: {"center_y": .2, 'center_x': .2}
+            x: items_field.x - self.width
+            y: items_field.y - self.height
+
+        MDTextFieldRect:
+            id: items_field
+            size_hint: None, None
+            height: "30dp"
+            width: "100dp"
+            pos_hint: {"center_y": .1, 'center_x': .1}
+            x: root.center[0] - self.width / 2
+
+        MDFillRoundFlatButton:
+            id: signin_button
+            text: "Gerar"
+            size_hint_x: .4
+            y: cota_field.y - self.height - dp(12)
+            _radius: 8
+            x: root.center[0] - self.width / 2 - root.shift_x_signin_button
+            on_release: root.generate_table()
+
+        BoxLayout:
+            id: tabela
+        Widget:
